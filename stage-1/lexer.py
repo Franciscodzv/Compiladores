@@ -149,15 +149,42 @@ class Lexer:
 
 		self.__words["VAR"] = Word(Tag.VAR, "VAR")
 		self.__words["FORWARD"] = Word(Tag.FORWARD, "FORWARD")
-		self.__words["BK"] = Word(Tag.BACKWARD, "BACKWARD")
 		self.__words["FD"] = Word(Tag.FORWARD, "FORWARD")
+		self.__words["BACKWARD"] = Word(Tag.BACKWARD, "BACKWARD")
+		self.__words["BK"] = Word(Tag.BACKWARD, "BACKWARD")
+		self.__words["LEFT"] = Word(Tag.LEFT, "LEFT")
 		self.__words["LT"] = Word(Tag.LEFT, "LEFT")
+		self.__words["RIGHT"] = Word(Tag.RIGHT, "RIGHT")
 		self.__words["RT"] = Word(Tag.RIGHT, "RIGHT")
+		self.__words["PENUP"] = Word(Tag.PENUP, "PENUP")
 		self.__words["PU"] = Word(Tag.PENUP, "PENUP")
+		self.__words["PENDOWN"] = Word(Tag.PENDOWN, "PENDOWN")
 		self.__words["PD"] = Word(Tag.PENDOWN, "PENDOWN")
+		self.__words["REPEAT"] = Word(Tag.REPEAT, "REPEAT")
 		self.__words["REPCOUNT"] = Word(Tag.REPEAT, "REPEAT")
 		self.__words[":"] = Word(Tag.REPEAT, "MAKE")
+		self.__words["CLEAR"] = Word(Tag.CLEAR, "CLEAR")
 		self.__words["CLS"] = Word(Tag.CLEAR, "CLEAR")
+		self.__words["PRINT"] = Word(Tag.PRINT, "PRINT")
+		self.__words["ENDREPEAT"] = Word(Tag.ENDREPEAT, "ENDREPEAT")
+		self.__words["SETX"] = Word(Tag.SETX, "SETX")
+		self.__words["SETY"] = Word(Tag.SETY, "SETY")
+		self.__words["SETXY"] = Word(Tag.SETXY, "SETXY")
+		self.__words["CIRCLE"] = Word(Tag.CIRCLE, "CIRCLE")
+		self.__words["ARC"] = Word(Tag.ARC, "ARC")
+		self.__words["PENWIDTH"] = Word(Tag.PENWIDTH, "PENWIDTH")
+		self.__words["ERASE"] = Word(Tag.ERASE, "ERASE")
+		self.__words["CLEAR"] = Word(Tag.CLEAR, "CLEAR")
+		self.__words["TO"] = Word(Tag.TO, "TO")
+		self.__words["END"] = Word(Tag.END, "END")
+		self.__words["IF"] = Word(Tag.IF, "IF")
+		self.__words["PRINT"] = Word(Tag.PRINT, "PRINT")
+		
+
+
+
+	
+
 
 
 		## ADD ALL RESERVED WORDS ##
