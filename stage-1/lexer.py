@@ -9,6 +9,9 @@ class Tag(Enum):
 	LEQ = 259
 	NEQ = 260
 	ASSIGN = 261
+	AND = 262
+	OR = 263
+	MOD = 264
 	## REGULAR EXPRESSIONS ##
 	ID = 357
 	NUMBER = 358
@@ -18,6 +21,31 @@ class Tag(Enum):
 	## RESERVED WORDS ##
 	VAR = 457
 	FORWARD = 548
+	TO = 549
+	END = 550
+	IF = 551
+	REPEAT = 552
+	ENDREPEAT = 553
+	MAKE = 554
+	PRINT = 555
+	ERASE = 556
+	SHOW = 557
+	BACKWARD = 558
+	RIGHT = 559
+	LEFT = 560
+	PENUP = 561
+	PENDOWN = 562
+	SETX = 563
+	SETY = 564
+	SETXY = 565
+	CLEAR = 566
+	CIRCLE = 567
+	ARC = 568
+	PENWIDTH = 569
+	COLOR = 570
+
+
+
 	
 class Token:
 	__tag = Tag.EOF
@@ -43,6 +71,12 @@ class Token:
 			return "Token - value FALSE"
 		elif self.__tag == Tag.VAR:
 			return "Token - value VAR"
+		elif self.__tag == Tag.AND:
+			return "Token - value AND"
+		elif self.__tag == Tag.OR:
+			return "Token - value OR"
+		elif self.__tag == Tag.MOD:
+			return "Token - value MOD"
 		else:
 			return "TOKEN - value " + chr(self.__tag)
 			
@@ -80,6 +114,11 @@ class Word(Token):
 			return "Word - lexeme: " + str(self.__lexeme)
 		else:
 			return "Reserved Word - lexeme: " + str(self.__lexeme)
+		
+
+
+
+
 
 class String(Token):
 	__string = ""
@@ -110,7 +149,17 @@ class Lexer:
 
 		self.__words["VAR"] = Word(Tag.VAR, "VAR")
 		self.__words["FORWARD"] = Word(Tag.FORWARD, "FORWARD")
+		self.__words["BK"] = Word(Tag.BACKWARD, "BACKWARD")
 		self.__words["FD"] = Word(Tag.FORWARD, "FORWARD")
+		self.__words["LT"] = Word(Tag.LEFT, "LEFT")
+		self.__words["RT"] = Word(Tag.RIGHT, "RIGHT")
+		self.__words["PU"] = Word(Tag.PENUP, "PENUP")
+		self.__words["PD"] = Word(Tag.PENDOWN, "PENDOWN")
+		self.__words["REPCOUNT"] = Word(Tag.REPEAT, "REPEAT")
+		self.__words[":"] = Word(Tag.REPEAT, "MAKE")
+		self.__words["CLS"] = Word(Tag.CLEAR, "CLEAR")
+
+
 		## ADD ALL RESERVED WORDS ##
 
 	def read(self):
@@ -133,8 +182,21 @@ class Lexer:
 	
 	def scan(self):
 		self.__skipSpaces()
-
+		
 		## ADD CODE TO SKIP COMMENTS HERE ##
+		if(self.__peek == '%'):
+			while self.__peek != '\n':
+				self.read()
+			self.__skipSpaces()
+
+
+		if self.__peek == '%':
+			while True:
+				self.read()
+				if self.__peek == '\n' or self.__peek == '\r':
+					self.__skipSpaces()
+					break
+
 
 		if self.__peek == '<':
 			if self.readch('='):
@@ -182,6 +244,17 @@ class Lexer:
 				if not(self.__peek.isdigit()):
 					break
 			## ADD CODE TO PROCESS DECIMAL PART HERE ##
+			if self.__peek == '.':
+				val = str(val) + '.'
+				self.read()
+				while True:
+					val = val + self.__peek
+					self.read()
+					if not(self.__peek.isdigit()):
+						break
+				return Number(float(val))
+				
+
 			return Number(val)
 
 		if self.__peek.isalpha():
