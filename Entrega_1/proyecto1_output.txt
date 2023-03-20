@@ -1,2 +1,0 @@
-Terminal: (, ), +
-Non terminal: A, B, c
