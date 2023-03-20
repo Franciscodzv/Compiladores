@@ -32,16 +32,20 @@ for i in range(int(inputLength)):
     check(lines, terminales, noTerminales)
 
 #write output to file
-with open('proyecto1_output.txt', 'w') as f:
+with open('output.txt', 'w') as f:
     f.write("Terminal: ")
+
     for i in range(len(terminales)):
         f.write(terminales[i])
-        f.write(", ")
+        if i != len(terminales)-1:
+            f.write(", ")
     f.write("\n")
     f.write("Non terminal: ")
+
     for i in range(len(noTerminales)):
         f.write(noTerminales[i])
-        f.write(", ")
+        if i != len(noTerminales)-1:
+            f.write(", ")
     f.write("\n")
 
 print("Terminal: ", terminales)

@@ -10,4 +10,4 @@ La consola imprimirá "Introduzca el input:"
 
 Salida:
 El programa imprime en la consola los terminales y los no terminales especificando cual es cual.
-El programa también guarda los resultados en un archivo llamado "proyecto1_output.txt"
+El programa también guarda los resultados en un archivo llamado "output.txt"
