@@ -1,0 +1,13 @@
+Francisco A. Díaz Vergara | A01204695
+
+Como correr el código:
+> python -u proyecto1.py
+
+Instrucciones de uso:
+La consola imprimirá "Introduzca el input:"
+*Introducir el numero de producciones
+*Introducir cada producción
+
+Salida:
+El programa imprime en la consola los terminales y los no terminales especificando cual es cual.
+El programa también guarda los resultados en un archivo llamado "proyecto1_output.txt"
